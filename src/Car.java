@@ -58,7 +58,7 @@ public class Car {
 	}
 
 	public void setNumber_of_repairs(int number_of_repairs) {
-		//this.number_of_repairs = repair.getCounter();
+		this.number_of_repairs = repair.getCounter();
 	}
 
 	public Date getDate() {
@@ -69,7 +69,59 @@ public class Car {
 		this.date = repair.getDate_of_repaire();
 	}
 
-	
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(cost_of_repair);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + mileage;
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + number_of_repairs;
+		result = prime * result + ((repair == null) ? 0 : repair.hashCode());
+		result = prime * result + ((year_of_production == null) ? 0 : year_of_production.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (Double.doubleToLongBits(cost_of_repair) != Double.doubleToLongBits(other.cost_of_repair))
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (mileage != other.mileage)
+			return false;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		if (number_of_repairs != other.number_of_repairs)
+			return false;
+		if (repair == null) {
+			if (other.repair != null)
+				return false;
+		} else if (!repair.equals(other.repair))
+			return false;
+		if (year_of_production == null) {
+			if (other.year_of_production != null)
+				return false;
+		} else if (!year_of_production.equals(other.year_of_production))
+			return false;
+		return true;
+	}
+
 	
 }
