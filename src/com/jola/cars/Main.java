@@ -1,3 +1,4 @@
+package com.jola.cars;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,12 +26,34 @@ public class Main {
 		 Car car2 = new Car(1998, "Audi", 200);
 		 Car car3 = new Car(2014, "Voltsvagen", 99);
 		 
+		 car.addRepair(rep);
 		 car.addRepair(rep2);
 		 car.addRepair(rep3);
 		 car2.addRepair(rep4);
 		 car2.addRepair(rep5);
 		 
+		 ArrayList<Repair> repairs = new ArrayList<>();
+		 repairs.add(rep);
+		 repairs.add(rep2);
+		 repairs.add(rep3);
+		 repairs.add(rep4);
+		 repairs.add(rep5);
 		 
+		 ArrayList<Car> loCars = new ArrayList<Car>();
+		 
+		 loCars.forEach(System.out::println);
+
+		loCars.add(car);
+		loCars.add(car2);
+		loCars.add(car3);
+
+		CarService carService = new CarService();
+		System.out.println("Car With Most Repairs: "+carService.getCarWithMostRepairs(loCars).toString());
+		
+		//zleeee
+		System.out.println("Car with hightes repairs price: "+carService.getCarWithHighestRepairCost(repairs).toString());
+		
+		System.out.println("CMost expensive repair: "+carService.getHighestRepairCost(repairs).toString());
 	}
 
 }
