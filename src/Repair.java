@@ -5,57 +5,56 @@ public class Repair {
 	/*naprawa posiada: datê naprawy, opis czynnoœci serwisowej, przebieg auta w momencie awarii, 
 	kwotê naprawy, nazwisko serwisanta odpowiedzialnego za naprawê*/
 	
-	private Date date_of_repaire;
-	private String service_operations;
-	private int mileage;
+	private int yearOfService;
+	private int monthOfService;
+	private int dayOfService;
+	private String serviceOperations;
 	private double price;
 	private String mechanic;
+	private Car car;
 	
-	//zle
-	public static int counter = 0;
-	public Repair()
-	{
-	    counter++;
-	}
-	
-	public int getCounter() {
-	    return counter;
-	}
-	
-	public Repair(Date date_of_repaire, String service_operations, int mileage, double price, String mechanic) {
+	public Repair(int yearOfService, int monthOfService, int dayOfService, String serviceOperations, double price,
+			String mechanic) {
 		super();
-		this.date_of_repaire = date_of_repaire;
-		this.service_operations = service_operations;
-		this.mileage = mileage;
+		this.yearOfService = yearOfService;
+		this.monthOfService = monthOfService;
+		this.dayOfService = dayOfService;
+		this.serviceOperations = serviceOperations;
 		this.price = price;
 		this.mechanic = mechanic;
 	}
 
-	public Date getDate_of_repaire() {
-		return date_of_repaire;
+	public int getYearOfService() {
+		return yearOfService;
 	}
 
-	public void setDate_of_repaire(Date date_of_repaire) {
-		this.date_of_repaire = date_of_repaire;
+	public void setYearOfService(int yearOfService) {
+		this.yearOfService = yearOfService;
 	}
 
-	public String getService_operations() {
-		return service_operations;
+	public int getMonthOfService() {
+		return monthOfService;
 	}
 
-	public void setService_operations(String service_operations) {
-		this.service_operations = service_operations;
+	public void setMonthOfService(int monthOfService) {
+		this.monthOfService = monthOfService;
 	}
 
-	public int getMileage() {
-		return mileage;
+	public int getDayOfService() {
+		return dayOfService;
 	}
 
-	public void setMileage(int mileage) {
-		this.mileage = mileage;
+	public void setDayOfService(int dayOfService) {
+		this.dayOfService = dayOfService;
 	}
 
-	
+	public String getServiceOperations() {
+		return serviceOperations;
+	}
+
+	public void setServiceOperations(String serviceOperations) {
+		this.serviceOperations = serviceOperations;
+	}
 
 	public double getPrice() {
 		return price;
@@ -73,15 +72,26 @@ public class Repair {
 		this.mechanic = mechanic;
 	}
 
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((date_of_repaire == null) ? 0 : date_of_repaire.hashCode());
+		result = prime * result + dayOfService;
 		result = prime * result + ((mechanic == null) ? 0 : mechanic.hashCode());
-		result = prime * result + mileage;
-	//	result = prime * result + price;
-		result = prime * result + ((service_operations == null) ? 0 : service_operations.hashCode());
+		result = prime * result + monthOfService;
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((serviceOperations == null) ? 0 : serviceOperations.hashCode());
+		result = prime * result + yearOfService;
 		return result;
 	}
 
@@ -94,26 +104,33 @@ public class Repair {
 		if (getClass() != obj.getClass())
 			return false;
 		Repair other = (Repair) obj;
-		if (date_of_repaire == null) {
-			if (other.date_of_repaire != null)
-				return false;
-		} else if (!date_of_repaire.equals(other.date_of_repaire))
+		if (dayOfService != other.dayOfService)
 			return false;
 		if (mechanic == null) {
 			if (other.mechanic != null)
 				return false;
 		} else if (!mechanic.equals(other.mechanic))
 			return false;
-		if (mileage != other.mileage)
+		if (monthOfService != other.monthOfService)
 			return false;
-		if (price != other.price)
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (service_operations == null) {
-			if (other.service_operations != null)
+		if (serviceOperations == null) {
+			if (other.serviceOperations != null)
 				return false;
-		} else if (!service_operations.equals(other.service_operations))
+		} else if (!serviceOperations.equals(other.serviceOperations))
+			return false;
+		if (yearOfService != other.yearOfService)
 			return false;
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Repair [yearOfService=" + yearOfService + ", monthOfService=" + monthOfService + ", dayOfService="
+				+ dayOfService + ", serviceOperations=" + serviceOperations + ", price=" + price + ", mechanic="
+				+ mechanic + "]";
+	}
+	
+	
 }

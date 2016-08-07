@@ -15,14 +15,22 @@ public class Main {
 		- oblicz kwotê napraw w danym miesi¹cu/roku - metoda double calculateTotalServiceCostFor(int month, int year, List<Car> cars)*/
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
-		Date date = null;//formatter.parse(year + "/" + month);
-		List <Car> cars = new ArrayList<>();
-		//Date year_of_production, String model, int mileage, int number_of_repairs, double cost_of_repair, Date date
-		//cars.add(new Car("08/2016", "Fiat", 320, 4, 700.90, "09/2015"))
-		
-		cars.forEach(System.out::println);
+		 Repair rep = new Repair(1990, 9, 31, "desc", 567.87, "Kowalski");
+		 Repair rep2 = new Repair(1990, 8, 31, "desc2", 567.87, "Nowak");
+		 Repair rep3 = new Repair(1996, 8, 31, "desc3", 679.87, "Nowak");
+		 Repair rep4 = new Repair(2000, 9, 31, "desc4", 789.87, "Kowalski");
+		 Repair rep5 = new Repair(2010, 6, 31, "desc5", 567.87, "Kowalski");
+		 
+		 Car car = new Car(1988, "Fiat", 134);
+		 Car car2 = new Car(1998, "Audi", 200);
+		 Car car3 = new Car(2014, "Voltsvagen", 99);
+		 
+		 car.addRepair(rep2);
+		 car.addRepair(rep3);
+		 car2.addRepair(rep4);
+		 car2.addRepair(rep5);
+		 
+		 
 	}
 
 }
