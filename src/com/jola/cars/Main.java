@@ -50,7 +50,6 @@ public class Main {
 		CarService carService = new CarService();
 		System.out.println("Car With Most Repairs: "+carService.getCarWithMostRepairs(loCars).toString());
 		
-		//zleeee
 		System.out.println("Car with hightes repairs price: "+carService.getCarWithHighestRepairCost(repairs).toString());
 		
 		System.out.println("CMost expensive repair: "+carService.getHighestRepairCost(repairs).toString());
